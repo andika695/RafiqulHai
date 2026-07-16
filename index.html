@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rafiqul Hajj — Melayani Sepenuh Hati, Mengurus Haji Lebih Tenang dan Pasti</title>
+  <meta name="description" content="Platform digital one-stop solution untuk persiapan ibadah haji: travel resmi, perlengkapan berkualitas, dan pendampingan personal." />
+  <link rel="icon" type="image/jpeg" href="LogoPerusahaan.jpeg" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy:    { DEFAULT: '#0B2545', 50:'#eef3fb', 100:'#d6e2f3', 600:'#12325f', 700:'#0B2545', 800:'#081b34', 900:'#061426' },
+            emerald: { DEFAULT: '#0E7C4A', 50:'#e9f7f0', 100:'#c9ecda', 500:'#0E7C4A', 600:'#0b6b40', 700:'#095434' },
+            gold:    { DEFAULT: '#C9A227', 50:'#faf5e6', 100:'#f3e8c2', 400:'#d9b943', 500:'#C9A227', 600:'#a8871d' },
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            arabic: ['Amiri', 'serif'],
+          },
+          boxShadow: {
+            soft: '0 10px 40px -12px rgba(11,37,69,0.18)',
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Small decorative pattern for hero / accents (Islamic geometric feel) */
+    .pattern-bg {
+      background-color: #0B2545;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(201,162,39,0.10) 0, transparent 25%),
+        radial-gradient(circle at 80% 0%, rgba(14,124,74,0.18) 0, transparent 35%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23C9A227' stroke-opacity='0.06' stroke-width='1'%3E%3Cpath d='M30 0l30 30-30 30L0 30z'/%3E%3Ccircle cx='30' cy='30' r='14'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .active-link { color:#C9A227 !important; }
+    /* Accordion animation */
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+  </style>
+</head>
+
+<body class="font-sans text-navy-800 bg-white antialiased">
+
+  <!-- ================= HEADER / NAVBAR (Sticky) ================= -->
+  <header id="navbar" class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur border-b border-navy-100/60 transition-all">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+
+        <!-- Logo -->
+        <a href="#beranda" class="flex items-center group">
+          <img src="LogoPerusahaan.jpeg" alt="Rafiqul Hajj — Melayani Sepenuh Hati, Mengurus Haji Lebih Tenang dan Pasti"
+               class="h-12 md:h-14 w-auto object-contain" />
+        </a>
+
+        <!-- Desktop Menu -->
+        <ul class="hidden lg:flex items-center gap-8 text-sm font-semibold text-navy-700">
+          <li><a href="#beranda" class="nav-link hover:text-gold transition">Beranda</a></li>
+          <li><a href="#perlengkapan" class="nav-link hover:text-gold transition">Perlengkapan</a></li>
+          <li><a href="#penerbangan" class="nav-link hover:text-gold transition">Penerbangan</a></li>
+          <li><a href="#harga" class="nav-link hover:text-gold transition">Harga</a></li>
+          <li><a href="#faq" class="nav-link hover:text-gold transition">FAQ</a></li>
+        </ul>
+
+        <!-- Desktop CTA -->
+        <div class="hidden lg:block">
+          <a href="#harga" class="inline-flex items-center gap-2 bg-emerald hover:bg-emerald-600 text-white font-semibold text-sm px-5 py-2.5 rounded-full shadow-soft transition">
+            Daftar Gratis Sekarang
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5-5 5M6 12h12" /></svg>
+          </a>
+        </div>
+
+        <!-- Mobile toggle -->
+        <button id="menuBtn" aria-label="Buka menu" class="lg:hidden grid place-items-center w-10 h-10 rounded-lg text-navy hover:bg-navy-50 transition">
+          <svg id="iconOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="iconClose" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="lg:hidden hidden border-t border-navy-100 bg-white">
+      <ul class="px-4 py-4 space-y-1 text-navy-700 font-semibold">
+        <li><a href="#beranda" class="mobile-link block px-3 py-2.5 rounded-lg hover:bg-navy-50">Beranda</a></li>
+        <li><a href="#perlengkapan" class="mobile-link block px-3 py-2.5 rounded-lg hover:bg-navy-50">Perlengkapan</a></li>
+        <li><a href="#penerbangan" class="mobile-link block px-3 py-2.5 rounded-lg hover:bg-navy-50">Penerbangan</a></li>
+        <li><a href="#harga" class="mobile-link block px-3 py-2.5 rounded-lg hover:bg-navy-50">Harga</a></li>
+        <li><a href="#faq" class="mobile-link block px-3 py-2.5 rounded-lg hover:bg-navy-50">FAQ</a></li>
+        <li class="pt-2"><a href="#harga" class="mobile-link block text-center bg-emerald text-white px-3 py-3 rounded-full">Daftar Gratis Sekarang</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section id="beranda" class="pattern-bg relative overflow-hidden pt-28 md:pt-36 pb-20 md:pb-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+        <!-- Copy -->
+        <div class="text-center lg:text-left">
+          <span class="inline-flex items-center gap-2 bg-white/10 border border-gold/30 text-gold text-xs font-semibold px-4 py-1.5 rounded-full backdrop-blur">
+            <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+            Platform One-Stop Solution Ibadah Haji
+          </span>
+
+          <h1 class="mt-6 text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight">
+            Persiapan Haji Lebih <span class="text-gold">Mudah</span>, <span class="text-emerald-100">Aman</span>, dan <span class="text-gold">Terpercaya</span>
+          </h1>
+
+          <p class="mt-5 text-base md:text-lg text-navy-100/90 max-w-xl mx-auto lg:mx-0">
+            Temukan travel resmi, perlengkapan berkualitas, dan pendampingan personal dalam satu platform.
+          </p>
+
+          <p class="mt-3 font-arabic text-gold/90 text-lg">لَبَّيْكَ اللّٰهُمَّ لَبَّيْكَ</p>
+
+          <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+            <a href="#mengapa" class="inline-flex items-center justify-center gap-2 bg-gold hover:bg-gold-600 text-navy font-bold px-7 py-3.5 rounded-full shadow-soft transition">
+              Mulai Persiapan
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5-5 5M6 12h12"/></svg>
+            </a>
+            <a href="#perlengkapan" class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/25 font-semibold px-7 py-3.5 rounded-full backdrop-blur transition">
+              Lihat Perlengkapan
+            </a>
+          </div>
+
+          <!-- Trust stats -->
+          <div class="mt-10 grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0">
+            <div class="text-center lg:text-left">
+              <p class="text-2xl md:text-3xl font-extrabold text-gold">120+</p>
+              <p class="text-xs text-navy-100/80 mt-1">Travel Resmi</p>
+            </div>
+            <div class="text-center lg:text-left">
+              <p class="text-2xl md:text-3xl font-extrabold text-gold">8.500+</p>
+              <p class="text-xs text-navy-100/80 mt-1">Jemaah Terbantu</p>
+            </div>
+            <div class="text-center lg:text-left">
+              <p class="text-2xl md:text-3xl font-extrabold text-gold">4.9/5</p>
+              <p class="text-xs text-navy-100/80 mt-1">Rating Pengguna</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual card -->
+        <div class="relative">
+          <div class="relative rounded-3xl overflow-hidden shadow-soft ring-1 ring-white/10">
+            <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=1200&q=80"
+                 onerror="this.src='https://placehold.co/1200x1400/0B2545/C9A227?text=Rafiqul+Hajj'"
+                 alt="Suasana ibadah haji di Masjidil Haram" class="w-full h-[420px] md:h-[520px] object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-transparent to-transparent"></div>
+          </div>
+
+          <!-- Floating badge -->
+          <div class="absolute -bottom-5 -left-3 sm:left-6 bg-white rounded-2xl shadow-soft p-4 flex items-center gap-3 max-w-[240px]">
+            <span class="grid place-items-center w-11 h-11 rounded-xl bg-emerald-50 text-emerald">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </span>
+            <div>
+              <p class="text-sm font-bold text-navy">Terverifikasi Resmi</p>
+              <p class="text-xs text-navy-600">Travel berizin Kemenag</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MENGAPA MEMILIH KAMI ================= -->
+  <section id="mengapa" class="py-20 md:py-28 bg-navy-50/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center">
+        <span class="text-emerald font-bold text-sm uppercase tracking-wider">Mengapa Rafiqul Hajj</span>
+        <h2 class="mt-3 text-3xl md:text-4xl font-extrabold text-navy">
+          Mengapa Persiapan Haji Masih Terasa Rumit?
+        </h2>
+        <p class="mt-4 text-navy-600">
+          Informasi tersebar, sulit membedakan travel resmi, dan bingung menyiapkan perlengkapan.
+          Kami hadir menyederhanakan semuanya dalam satu platform terpercaya.
+        </p>
+      </div>
+
+      <div class="mt-14 grid md:grid-cols-3 gap-6">
+        <!-- Feature 1 -->
+        <div class="group bg-white rounded-2xl p-7 shadow-soft border border-navy-100/50 hover:-translate-y-1 transition">
+          <span class="grid place-items-center w-14 h-14 rounded-2xl bg-emerald-50 text-emerald group-hover:bg-emerald group-hover:text-white transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7l9-4 9 4-9 4-9-4zm0 0v6m18-6v6M7 9v6l5 2 5-2V9"/></svg>
+          </span>
+          <h3 class="mt-5 text-lg font-bold text-navy">Direktori Travel Resmi</h3>
+          <p class="mt-2 text-sm text-navy-600 leading-relaxed">
+            Bandingkan puluhan biro travel berizin Kemenag lengkap dengan jadwal, fasilitas, dan harga transparan.
+          </p>
+        </div>
+        <!-- Feature 2 -->
+        <div class="group bg-white rounded-2xl p-7 shadow-soft border border-navy-100/50 hover:-translate-y-1 transition">
+          <span class="grid place-items-center w-14 h-14 rounded-2xl bg-gold-50 text-gold-600 group-hover:bg-gold group-hover:text-navy transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+          </span>
+          <h3 class="mt-5 text-lg font-bold text-navy">Checklist Digital</h3>
+          <p class="mt-2 text-sm text-navy-600 leading-relaxed">
+            Panduan persiapan interaktif — dari dokumen, manasik, hingga perlengkapan — agar tidak ada yang terlewat.
+          </p>
+        </div>
+        <!-- Feature 3 -->
+        <div class="group bg-white rounded-2xl p-7 shadow-soft border border-navy-100/50 hover:-translate-y-1 transition">
+          <span class="grid place-items-center w-14 h-14 rounded-2xl bg-navy-50 text-navy group-hover:bg-navy group-hover:text-gold transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-3.13a4 4 0 10-4-4 4 4 0 004 4zm6 0a3 3 0 10-2.5-1.35"/></svg>
+          </span>
+          <h3 class="mt-5 text-lg font-bold text-navy">Personal Assistant</h3>
+          <p class="mt-2 text-sm text-navy-600 leading-relaxed">
+            Pendamping personal siap membantu konsultasi, mengingatkan jadwal, dan menuntun setiap tahap ibadah Anda.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= KATALOG PERLENGKAPAN ================= -->
+  <section id="perlengkapan" class="py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+        <div class="max-w-xl">
+          <span class="text-emerald font-bold text-sm uppercase tracking-wider">Marketplace Perlengkapan</span>
+          <h2 class="mt-3 text-3xl md:text-4xl font-extrabold text-navy">Katalog Perlengkapan Haji &amp; Umroh</h2>
+          <p class="mt-3 text-navy-600">Perlengkapan berkualitas, tersertifikasi, dan siap antar ke seluruh Indonesia.</p>
+        </div>
+        <a href="#" class="hidden md:inline-flex items-center gap-2 text-emerald font-semibold hover:gap-3 transition-all">
+          Lihat semua produk
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5-5 5M6 12h12"/></svg>
+        </a>
+      </div>
+
+      <!-- Product grid -->
+      <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Product Card Template -->
+        <!-- 1 -->
+        <article class="group bg-white rounded-2xl overflow-hidden border border-navy-100/60 shadow-soft hover:-translate-y-1 transition">
+          <div class="relative aspect-square overflow-hidden bg-navy-50">
+            <img src="https://images.unsplash.com/photo-1614850523060-8da1d56ae167?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/600x600/e9f7f0/0E7C4A?text=Kain+Ihram'" alt="Kain Ihram Premium" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+            <span class="absolute top-3 left-3 bg-gold text-navy text-xs font-bold px-3 py-1 rounded-full">Best Seller</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-bold text-navy">Kain Ihram Premium</h3>
+            <p class="mt-1 text-xs text-navy-600">Katun Terry lembut &amp; menyerap keringat</p>
+            <div class="mt-3 flex items-center justify-between">
+              <span class="text-emerald font-extrabold text-lg">Rp185.000</span>
+              <span class="text-xs text-navy-500 line-through">Rp250.000</span>
+            </div>
+            <button class="mt-4 w-full inline-flex items-center justify-center gap-2 bg-navy hover:bg-emerald text-white font-semibold text-sm py-2.5 rounded-xl transition">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 4.6A1 1 0 006 19h12M9 21h.01M15 21h.01"/></svg>
+              Beli Sekarang
+            </button>
+          </div>
+        </article>
+
+        <!-- 2 -->
+        <article class="group bg-white rounded-2xl overflow-hidden border border-navy-100/60 shadow-soft hover:-translate-y-1 transition">
+          <div class="relative aspect-square overflow-hidden bg-navy-50">
+            <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/600x600/eef3fb/0B2545?text=Koper+Haji'" alt="Koper Haji Anti Pecah" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          </div>
+          <div class="p-5">
+            <h3 class="font-bold text-navy">Koper Haji Anti Pecah</h3>
+            <p class="mt-1 text-xs text-navy-600">Bahan ABS + roda putar 360°</p>
+            <div class="mt-3 flex items-center justify-between">
+              <span class="text-emerald font-extrabold text-lg">Rp549.000</span>
+              <span class="text-xs text-navy-500 line-through">Rp720.000</span>
+            </div>
+            <button class="mt-4 w-full inline-flex items-center justify-center gap-2 bg-navy hover:bg-emerald text-white font-semibold text-sm py-2.5 rounded-xl transition">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 4.6A1 1 0 006 19h12M9 21h.01M15 21h.01"/></svg>
+              Beli Sekarang
+            </button>
+          </div>
+        </article>
+
+        <!-- 3 -->
+        <article class="group bg-white rounded-2xl overflow-hidden border border-navy-100/60 shadow-soft hover:-translate-y-1 transition">
+          <div class="relative aspect-square overflow-hidden bg-navy-50">
+            <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/600x600/faf5e6/C9A227?text=Sabuk+Ihram'" alt="Sabuk Ihram" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+            <span class="absolute top-3 left-3 bg-emerald text-white text-xs font-bold px-3 py-1 rounded-full">Baru</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-bold text-navy">Sabuk Ihram Multi-Saku</h3>
+            <p class="mt-1 text-xs text-navy-600">Anti air, aman untuk dokumen &amp; uang</p>
+            <div class="mt-3 flex items-center justify-between">
+              <span class="text-emerald font-extrabold text-lg">Rp95.000</span>
+              <span class="text-xs text-navy-500 line-through">Rp130.000</span>
+            </div>
+            <button class="mt-4 w-full inline-flex items-center justify-center gap-2 bg-navy hover:bg-emerald text-white font-semibold text-sm py-2.5 rounded-xl transition">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 4.6A1 1 0 006 19h12M9 21h.01M15 21h.01"/></svg>
+              Beli Sekarang
+            </button>
+          </div>
+        </article>
+
+        <!-- 4 -->
+        <article class="group bg-white rounded-2xl overflow-hidden border border-navy-100/60 shadow-soft hover:-translate-y-1 transition">
+          <div class="relative aspect-square overflow-hidden bg-navy-50">
+            <img src="https://images.unsplash.com/photo-1603487742131-4160ec999306?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/600x600/e9f7f0/0E7C4A?text=Sandal+Haji'" alt="Sandal Haji" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          </div>
+          <div class="p-5">
+            <h3 class="font-bold text-navy">Sandal Haji Anti Slip</h3>
+            <p class="mt-1 text-xs text-navy-600">Ringan, empuk, nyaman untuk tawaf</p>
+            <div class="mt-3 flex items-center justify-between">
+              <span class="text-emerald font-extrabold text-lg">Rp79.000</span>
+              <span class="text-xs text-navy-500 line-through">Rp110.000</span>
+            </div>
+            <button class="mt-4 w-full inline-flex items-center justify-center gap-2 bg-navy hover:bg-emerald text-white font-semibold text-sm py-2.5 rounded-xl transition">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 4.6A1 1 0 006 19h12M9 21h.01M15 21h.01"/></svg>
+              Beli Sekarang
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DAFTAR PENERBANGAN & TRAVEL ================= -->
+  <section id="penerbangan" class="py-20 md:py-28 bg-navy-50/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center">
+        <span class="text-emerald font-bold text-sm uppercase tracking-wider">Jadwal Keberangkatan</span>
+        <h2 class="mt-3 text-3xl md:text-4xl font-extrabold text-navy">Daftar Penerbangan &amp; Travel Resmi</h2>
+        <p class="mt-3 text-navy-600">Pilih paket keberangkatan dari biro travel terpercaya dengan fasilitas terbaik.</p>
+      </div>
+
+      <!-- Desktop table -->
+      <div class="mt-12 hidden md:block bg-white rounded-2xl shadow-soft border border-navy-100/60 overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm">
+            <thead class="bg-navy text-white">
+              <tr>
+                <th class="px-6 py-4 font-semibold">Travel / Maskapai</th>
+                <th class="px-6 py-4 font-semibold">Keberangkatan</th>
+                <th class="px-6 py-4 font-semibold">Fasilitas</th>
+                <th class="px-6 py-4 font-semibold">Harga</th>
+                <th class="px-6 py-4 font-semibold text-right">Aksi</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-navy-100">
+              <tr class="hover:bg-navy-50/50 transition">
+                <td class="px-6 py-5">
+                  <p class="font-bold text-navy">Baitullah Tour · Garuda</p>
+                  <p class="text-xs text-navy-500">Haji Plus · 25 Hari</p>
+                </td>
+                <td class="px-6 py-5 text-navy-700">12 Mei 2026</td>
+                <td class="px-6 py-5"><span class="text-navy-700">Hotel ⭐⭐⭐⭐⭐, Bimbingan, Full Board</span></td>
+                <td class="px-6 py-5 font-extrabold text-emerald">Rp95 Jt</td>
+                <td class="px-6 py-5 text-right"><a href="#" class="inline-flex items-center gap-1 text-emerald font-semibold hover:underline">Cek Detail →</a></td>
+              </tr>
+              <tr class="hover:bg-navy-50/50 transition">
+                <td class="px-6 py-5">
+                  <p class="font-bold text-navy">Safar Mabrur · Saudia</p>
+                  <p class="text-xs text-navy-500">Haji Reguler · 30 Hari</p>
+                </td>
+                <td class="px-6 py-5 text-navy-700">28 Mei 2026</td>
+                <td class="px-6 py-5"><span class="text-navy-700">Hotel ⭐⭐⭐⭐, Manasik, Muthawif</span></td>
+                <td class="px-6 py-5 font-extrabold text-emerald">Rp82 Jt</td>
+                <td class="px-6 py-5 text-right"><a href="#" class="inline-flex items-center gap-1 text-emerald font-semibold hover:underline">Cek Detail →</a></td>
+              </tr>
+              <tr class="hover:bg-navy-50/50 transition">
+                <td class="px-6 py-5">
+                  <p class="font-bold text-navy">Amanah Wisata · Lion</p>
+                  <p class="text-xs text-navy-500">Umroh Plus · 12 Hari</p>
+                </td>
+                <td class="px-6 py-5 text-navy-700">05 Jun 2026</td>
+                <td class="px-6 py-5"><span class="text-navy-700">Hotel ⭐⭐⭐⭐, City Tour, Koper Gratis</span></td>
+                <td class="px-6 py-5 font-extrabold text-emerald">Rp32 Jt</td>
+                <td class="px-6 py-5 text-right"><a href="#" class="inline-flex items-center gap-1 text-emerald font-semibold hover:underline">Cek Detail →</a></td>
+              </tr>
+              <tr class="hover:bg-navy-50/50 transition">
+                <td class="px-6 py-5">
+                  <p class="font-bold text-navy">Madinah Barokah · Emirates</p>
+                  <p class="text-xs text-navy-500">Haji Furoda · 22 Hari</p>
+                </td>
+                <td class="px-6 py-5 text-navy-700">18 Jun 2026</td>
+                <td class="px-6 py-5"><span class="text-navy-700">Hotel ⭐⭐⭐⭐⭐, Visa Cepat, VIP</span></td>
+                <td class="px-6 py-5 font-extrabold text-emerald">Rp165 Jt</td>
+                <td class="px-6 py-5 text-right"><a href="#" class="inline-flex items-center gap-1 text-emerald font-semibold hover:underline">Cek Detail →</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Mobile cards -->
+      <div class="mt-10 grid gap-4 md:hidden">
+        <!-- card 1 -->
+        <div class="bg-white rounded-2xl p-5 shadow-soft border border-navy-100/60">
+          <div class="flex items-start justify-between">
+            <div>
+              <p class="font-bold text-navy">Baitullah Tour · Garuda</p>
+              <p class="text-xs text-navy-500">Haji Plus · 25 Hari</p>
+            </div>
+            <span class="font-extrabold text-emerald">Rp95 Jt</span>
+          </div>
+          <dl class="mt-4 space-y-2 text-sm">
+            <div class="flex justify-between"><dt class="text-navy-500">Keberangkatan</dt><dd class="font-medium text-navy">12 Mei 2026</dd></div>
+            <div class="flex justify-between gap-4"><dt class="text-navy-500">Fasilitas</dt><dd class="text-right text-navy-700">Hotel ⭐⭐⭐⭐⭐, Full Board</dd></div>
+          </dl>
+          <a href="#" class="mt-4 block text-center bg-navy text-white font-semibold py-2.5 rounded-xl">Cek Detail</a>
+        </div>
+        <!-- card 2 -->
+        <div class="bg-white rounded-2xl p-5 shadow-soft border border-navy-100/60">
+          <div class="flex items-start justify-between">
+            <div>
+              <p class="font-bold text-navy">Safar Mabrur · Saudia</p>
+              <p class="text-xs text-navy-500">Haji Reguler · 30 Hari</p>
+            </div>
+            <span class="font-extrabold text-emerald">Rp82 Jt</span>
+          </div>
+          <dl class="mt-4 space-y-2 text-sm">
+            <div class="flex justify-between"><dt class="text-navy-500">Keberangkatan</dt><dd class="font-medium text-navy">28 Mei 2026</dd></div>
+            <div class="flex justify-between gap-4"><dt class="text-navy-500">Fasilitas</dt><dd class="text-right text-navy-700">Hotel ⭐⭐⭐⭐, Muthawif</dd></div>
+          </dl>
+          <a href="#" class="mt-4 block text-center bg-navy text-white font-semibold py-2.5 rounded-xl">Cek Detail</a>
+        </div>
+        <!-- card 3 -->
+        <div class="bg-white rounded-2xl p-5 shadow-soft border border-navy-100/60">
+          <div class="flex items-start justify-between">
+            <div>
+              <p class="font-bold text-navy">Amanah Wisata · Lion</p>
+              <p class="text-xs text-navy-500">Umroh Plus · 12 Hari</p>
+            </div>
+            <span class="font-extrabold text-emerald">Rp32 Jt</span>
+          </div>
+          <dl class="mt-4 space-y-2 text-sm">
+            <div class="flex justify-between"><dt class="text-navy-500">Keberangkatan</dt><dd class="font-medium text-navy">05 Jun 2026</dd></div>
+            <div class="flex justify-between gap-4"><dt class="text-navy-500">Fasilitas</dt><dd class="text-right text-navy-700">Hotel ⭐⭐⭐⭐, City Tour</dd></div>
+          </dl>
+          <a href="#" class="mt-4 block text-center bg-navy text-white font-semibold py-2.5 rounded-xl">Cek Detail</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PAKET HARGA ================= -->
+  <section id="harga" class="py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center">
+        <span class="text-emerald font-bold text-sm uppercase tracking-wider">Paket Harga</span>
+        <h2 class="mt-3 text-3xl md:text-4xl font-extrabold text-navy">Pilih Paket Sesuai Kebutuhan Anda</h2>
+        <p class="mt-3 text-navy-600">Mulai gratis, tingkatkan kapan saja untuk pendampingan lebih lengkap.</p>
+      </div>
+
+      <div class="mt-14 grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+
+        <!-- Free -->
+        <div class="bg-white rounded-3xl p-8 border border-navy-100/70 shadow-soft flex flex-col">
+          <h3 class="text-lg font-bold text-navy">Free</h3>
+          <p class="mt-1 text-sm text-navy-600">Untuk mulai persiapan dasar</p>
+          <p class="mt-6"><span class="text-4xl font-extrabold text-navy">Rp0</span><span class="text-navy-500">/selamanya</span></p>
+          <ul class="mt-6 space-y-3 text-sm text-navy-700 flex-1">
+            <li class="flex gap-3"><svg class="w-5 h-5 text-emerald shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Pencarian travel resmi</li>
+            <li class="flex gap-3"><svg class="w-5 h-5 text-emerald shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Checklist persiapan dasar</li>
+            <li class="flex gap-3 text-navy-400"><svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg> Konsultasi Personal Assistant</li>
+          </ul>
+          <a href="#" class="mt-8 block text-center border-2 border-navy text-navy font-bold py-3 rounded-full hover:bg-navy hover:text-white transition">Mulai Gratis</a>
+        </div>
+
+        <!-- Premium (highlighted) -->
+        <div class="relative bg-navy rounded-3xl p-8 shadow-soft flex flex-col ring-2 ring-gold md:-translate-y-4">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-navy text-xs font-bold px-4 py-1 rounded-full">Paling Populer</span>
+          <h3 class="text-lg font-bold text-gold">Premium</h3>
+          <p class="mt-1 text-sm text-navy-100/80">Persiapan lebih terpandu</p>
+          <p class="mt-6"><span class="text-4xl font-extrabold text-white">Rp199.000</span><span class="text-navy-100/70">/bln</span></p>
+          <ul class="mt-6 space-y-3 text-sm text-navy-50 flex-1">
+            <li class="flex gap-3"><svg class="w-5 h-5 text-gold shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Semua fitur paket Free</li>
+            <li class="flex gap-3"><svg class="w-5 h-5 text-gold shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Checklist premium lengkap</li>
+            <li class="flex gap-3"><svg class="w-5 h-5 text-gold shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Reminder jadwal &amp; dokumen</li>
+            <li class="flex gap-3"><svg class="w-5 h-5 text-gold shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Konsultasi Personal Assistant</li>
+          </ul>
+          <a href="#" class="mt-8 block text-center bg-gold hover:bg-gold-600 text-navy font-bold py-3 rounded-full transition">Pilih Premium</a>
+        </div>
+
+        <!-- Premium Plus -->
+        <div class="bg-white rounded-3xl p-8 border border-navy-100/70 shadow-soft flex flex-col">
+          <h3 class="text-lg font-bold text-navy">Premium Plus</h3>
+          <p class="mt-1 text-sm text-navy-600">Pendampingan penuh &amp; bebas repot</p>
+          <p class="mt-6"><span class="text-4xl font-extrabold text-navy">Rp499.000</span><span class="text-navy-500">/bln</span></p>
+          <ul class="mt-6 space-y-3 text-sm text-navy-700 flex-1">
+            <li class="flex gap-3"><svg class="w-5 h-5 text-emerald shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Semua fitur paket Premium</li>
+            <li class="flex gap-3"><svg class="w-5 h-5 text-emerald shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Bantuan administrasi &amp; dokumen</li>
+            <li class="flex gap-3"><svg class="w-5 h-5 text-emerald shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Pendampingan penuh 1-on-1</li>
+          </ul>
+          <a href="#" class="mt-8 block text-center border-2 border-navy text-navy font-bold py-3 rounded-full hover:bg-navy hover:text-white transition">Pilih Premium Plus</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONI ================= -->
+  <section id="testimoni" class="py-20 md:py-28 bg-navy-50/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center">
+        <span class="text-emerald font-bold text-sm uppercase tracking-wider">Kata Mereka</span>
+        <h2 class="mt-3 text-3xl md:text-4xl font-extrabold text-navy">Dipercaya Ribuan Calon Jemaah</h2>
+      </div>
+
+      <div class="mt-14 grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <!-- Testi 1 -->
+        <figure class="bg-white rounded-2xl p-8 shadow-soft border border-navy-100/60">
+          <div class="flex gap-1 text-gold">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <blockquote class="mt-4 text-navy-700 leading-relaxed">
+            “Rafiqul Hajj benar-benar membantu saya memastikan seluruh dokumen lengkap tanpa ada yang terlewat.
+            Checklist digitalnya sangat memudahkan, tinggal ikuti langkah demi langkah.”
+          </blockquote>
+          <figcaption class="mt-6 flex items-center gap-3">
+            <span class="grid place-items-center w-11 h-11 rounded-full bg-emerald-50 text-emerald font-bold">A</span>
+            <div>
+              <p class="font-bold text-navy">Ahmad</p>
+              <p class="text-xs text-navy-500">Yogyakarta</p>
+            </div>
+          </figcaption>
+        </figure>
+
+        <!-- Testi 2 -->
+        <figure class="bg-white rounded-2xl p-8 shadow-soft border border-navy-100/60">
+          <div class="flex gap-1 text-gold">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <blockquote class="mt-4 text-navy-700 leading-relaxed">
+            “Sangat mudah mencari travel resmi sekaligus membeli perlengkapan haji di satu tempat.
+            Hemat waktu, aman, dan harganya transparan. Terima kasih Rafiqul Hajj!”
+          </blockquote>
+          <figcaption class="mt-6 flex items-center gap-3">
+            <span class="grid place-items-center w-11 h-11 rounded-full bg-gold-50 text-gold-600 font-bold">S</span>
+            <div>
+              <p class="font-bold text-navy">Siti Rahma</p>
+              <p class="text-xs text-navy-500">Bandung</p>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section id="faq" class="py-20 md:py-28">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <span class="text-emerald font-bold text-sm uppercase tracking-wider">FAQ</span>
+        <h2 class="mt-3 text-3xl md:text-4xl font-extrabold text-navy">Pertanyaan yang Sering Diajukan</h2>
+      </div>
+
+      <div class="mt-12 space-y-4">
+        <!-- item -->
+        <div class="faq-item bg-white border border-navy-100/70 rounded-2xl shadow-soft overflow-hidden">
+          <button class="faq-toggle w-full flex items-center justify-between gap-4 px-6 py-5 text-left">
+            <span class="font-semibold text-navy">Apakah semua travel di Rafiqul Hajj resmi dan berizin?</span>
+            <svg class="faq-icon w-5 h-5 text-emerald shrink-0 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer px-6"><p class="pb-5 text-sm text-navy-600 leading-relaxed">Ya. Seluruh biro travel yang tampil telah kami verifikasi memiliki izin resmi dari Kementerian Agama (Kemenag) sehingga aman dan terpercaya.</p></div>
+        </div>
+        <!-- item -->
+        <div class="faq-item bg-white border border-navy-100/70 rounded-2xl shadow-soft overflow-hidden">
+          <button class="faq-toggle w-full flex items-center justify-between gap-4 px-6 py-5 text-left">
+            <span class="font-semibold text-navy">Apakah saya bisa menggunakan platform ini secara gratis?</span>
+            <svg class="faq-icon w-5 h-5 text-emerald shrink-0 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer px-6"><p class="pb-5 text-sm text-navy-600 leading-relaxed">Tentu. Paket Free memberi Anda akses pencarian travel dan checklist dasar tanpa biaya. Anda bisa upgrade kapan saja untuk fitur pendampingan lengkap.</p></div>
+        </div>
+        <!-- item -->
+        <div class="faq-item bg-white border border-navy-100/70 rounded-2xl shadow-soft overflow-hidden">
+          <button class="faq-toggle w-full flex items-center justify-between gap-4 px-6 py-5 text-left">
+            <span class="font-semibold text-navy">Bagaimana cara membeli perlengkapan haji di sini?</span>
+            <svg class="faq-icon w-5 h-5 text-emerald shrink-0 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer px-6"><p class="pb-5 text-sm text-navy-600 leading-relaxed">Cukup pilih produk pada katalog Perlengkapan, klik “Beli Sekarang”, lalu selesaikan pembayaran. Barang akan dikirim ke seluruh Indonesia.</p></div>
+        </div>
+        <!-- item -->
+        <div class="faq-item bg-white border border-navy-100/70 rounded-2xl shadow-soft overflow-hidden">
+          <button class="faq-toggle w-full flex items-center justify-between gap-4 px-6 py-5 text-left">
+            <span class="font-semibold text-navy">Apa itu layanan Personal Assistant?</span>
+            <svg class="faq-icon w-5 h-5 text-emerald shrink-0 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer px-6"><p class="pb-5 text-sm text-navy-600 leading-relaxed">Personal Assistant adalah pendamping personal yang membantu konsultasi, mengingatkan jadwal penting, dan memandu Anda di setiap tahap persiapan hingga keberangkatan.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA BANNER ================= -->
+  <section class="px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto pattern-bg rounded-3xl px-6 sm:px-12 py-14 text-center shadow-soft">
+      <h2 class="text-2xl md:text-4xl font-extrabold text-white">Siap Memulai Perjalanan Suci Anda?</h2>
+      <p class="mt-4 text-navy-100/90 max-w-xl mx-auto">Bergabunglah dengan ribuan calon jemaah yang mempersiapkan haji lebih tenang dan pasti bersama Rafiqul Hajj.</p>
+      <a href="#harga" class="mt-8 inline-flex items-center gap-2 bg-gold hover:bg-gold-600 text-navy font-bold px-8 py-3.5 rounded-full transition">
+        Daftar Gratis Sekarang
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5-5 5M6 12h12"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="mt-20 bg-navy-900 text-navy-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div class="grid gap-10 md:grid-cols-4">
+        <!-- Brand -->
+        <div class="md:col-span-2">
+          <a href="#beranda" class="inline-flex items-center bg-white rounded-2xl p-3 shadow-soft">
+            <img src="LogoPerusahaan.jpeg" alt="Rafiqul Hajj" class="h-16 w-auto object-contain" />
+          </a>
+          <p class="mt-4 text-sm text-navy-100/70 max-w-sm leading-relaxed">
+            Melayani Sepenuh Hati, Mengurus Haji Lebih Tenang dan Pasti. Platform digital one-stop solution untuk seluruh kebutuhan ibadah haji &amp; umroh Anda.
+          </p>
+          <!-- Socials -->
+          <div class="mt-6 flex gap-3">
+            <a href="#" aria-label="Instagram" class="grid place-items-center w-10 h-10 rounded-full bg-white/5 hover:bg-gold hover:text-navy transition">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.8.25 2.2.42.6.22 1 .49 1.4.9.4.4.7.8.9 1.4.17.4.36 1 .42 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 1.8-.42 2.2-.22.6-.49 1-.9 1.4-.4.4-.8.7-1.4.9-.4.17-1 .36-2.2.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-1.8-.25-2.2-.42-.6-.22-1-.49-1.4-.9-.4-.4-.7-.8-.9-1.4-.17-.4-.36-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-1.8.42-2.2.22-.6.49-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.17 1-.36 2.2-.42C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.07-.9.04-1.4.2-1.7.32-.4.16-.7.35-1 .65-.3.3-.5.6-.65 1-.12.3-.28.8-.32 1.7C3.6 8.5 3.6 8.9 3.6 12s0 3.5.07 4.7c.04.9.2 1.4.32 1.7.16.4.35.7.65 1 .3.3.6.5 1 .65.3.12.8.28 1.7.32 1.2.07 1.6.07 4.7.07s3.5 0 4.7-.07c.9-.04 1.4-.2 1.7-.32.4-.16.7-.35 1-.65.3-.3.5-.6.65-1 .12-.3.28-.8.32-1.7.07-1.2.07-1.6.07-4.7s0-3.5-.07-4.7c-.04-.9-.2-1.4-.32-1.7-.16-.4-.35-.7-.65-1-.3-.3-.6-.5-1-.65-.3-.12-.8-.28-1.7-.32C15.5 4 15.1 4 12 4zm0 3.1a4.9 4.9 0 100 9.8 4.9 4.9 0 000-9.8zm0 8.1a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm6.2-8.3a1.15 1.15 0 11-2.3 0 1.15 1.15 0 012.3 0z"/></svg>
+            </a>
+            <a href="#" aria-label="TikTok" class="grid place-items-center w-10 h-10 rounded-full bg-white/5 hover:bg-gold hover:text-navy transition">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M16.6 5.8a4.3 4.3 0 01-1-2.8h-3v11.5a2.5 2.5 0 11-2.5-2.5c.2 0 .5 0 .7.1V9a5.5 5.5 0 105 5.5V9.3a7.3 7.3 0 004.2 1.3V7.6a4.3 4.3 0 01-3.4-1.8z"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook" class="grid place-items-center w-10 h-10 rounded-full bg-white/5 hover:bg-gold hover:text-navy transition">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0022 12z"/></svg>
+            </a>
+            <a href="#" aria-label="YouTube" class="grid place-items-center w-10 h-10 rounded-full bg-white/5 hover:bg-gold hover:text-navy transition">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 00-1.8-1.8C19.3 5 12 5 12 5s-7.3 0-8.8.5A2.5 2.5 0 001.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 001.8 1.8C4.7 19 12 19 12 19s7.3 0 8.8-.5a2.5 2.5 0 001.8-1.8C23 15.2 23 12 23 12zm-13 3V9l5.2 3-5.2 3z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Navigasi -->
+        <div>
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider">Navigasi</h4>
+          <ul class="mt-4 space-y-2 text-sm text-navy-100/70">
+            <li><a href="#beranda" class="hover:text-gold transition">Beranda</a></li>
+            <li><a href="#perlengkapan" class="hover:text-gold transition">Perlengkapan</a></li>
+            <li><a href="#penerbangan" class="hover:text-gold transition">Penerbangan</a></li>
+            <li><a href="#harga" class="hover:text-gold transition">Harga</a></li>
+            <li><a href="#faq" class="hover:text-gold transition">FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Kontak -->
+        <div>
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider">Kontak</h4>
+          <ul class="mt-4 space-y-3 text-sm text-navy-100/70">
+            <li class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-gold shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.9 5.3a2 2 0 002.2 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <a href="mailto:support@rafiqulhajj.com" class="hover:text-gold transition">support@rafiqulhajj.com</a>
+            </li>
+            <li class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-gold shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.2-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.5-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5-.1-.1-.6-1.5-.9-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.1 2-.7 3.3.5 1.6 1.6 3 2 3.5.2.3 2.7 4.2 6.6 5.7 2.4.9 3 .8 3.5.7.7-.1 1.7-.7 2-1.4.2-.6.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4zM12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2z"/></svg>
+              <a href="https://wa.me/6281234567890" class="hover:text-gold transition">+62 812-3456-7890</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-navy-100/60">
+        <p>© 2026 Rafiqul Hajj. Seluruh hak cipta dilindungi.</p>
+        <p>Melayani Sepenuh Hati, Mengurus Haji Lebih Tenang dan Pasti.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/6281234567890" aria-label="Chat WhatsApp" class="fixed bottom-5 right-5 z-40 grid place-items-center w-14 h-14 rounded-full bg-emerald text-white shadow-soft hover:scale-105 transition">
+    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.2-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.5-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5-.1-.1-.6-1.5-.9-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.1 2-.7 3.3.5 1.6 1.6 3 2 3.5.2.3 2.7 4.2 6.6 5.7 2.4.9 3 .8 3.5.7.7-.1 1.7-.7 2-1.4.2-.6.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4zM12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2z"/></svg>
+  </a>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const iconOpen = document.getElementById('iconOpen');
+    const iconClose = document.getElementById('iconClose');
+
+    function toggleMenu(forceClose) {
+      const isHidden = mobileMenu.classList.contains('hidden');
+      if (forceClose || !isHidden) {
+        mobileMenu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+      } else {
+        mobileMenu.classList.remove('hidden');
+        iconOpen.classList.add('hidden');
+        iconClose.classList.remove('hidden');
+      }
+    }
+    menuBtn.addEventListener('click', () => toggleMenu(false));
+    document.querySelectorAll('.mobile-link').forEach(link =>
+      link.addEventListener('click', () => toggleMenu(true))
+    );
+
+    // Navbar shadow on scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) navbar.classList.add('shadow-soft');
+      else navbar.classList.remove('shadow-soft');
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const answer = item.querySelector('.faq-answer');
+        const icon = btn.querySelector('.faq-icon');
+        const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+
+        // close all
+        document.querySelectorAll('.faq-answer').forEach(a => a.style.maxHeight = '0px');
+        document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('rotate-180'));
+
+        if (!isOpen) {
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          icon.classList.add('rotate-180');
+        }
+      });
+    });
+
+    // Active nav link on scroll (scrollspy)
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 120) current = sec.getAttribute('id');
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active-link');
+        if (link.getAttribute('href') === '#' + current) link.classList.add('active-link');
+      });
+    });
+  </script>
+</body>
+</html>
